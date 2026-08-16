@@ -1,0 +1,220 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --pink: #ff4f81;
+  --dark-pink: #d92f61;
+  --soft: #fff0f5;
+  --text: #5d2639;
+}
+
+html, body {
+  margin: 0;
+  min-height: 100%;
+  font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  overflow: hidden;
+  color: var(--text);
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255,255,255,.9) 0 5%, transparent 6%),
+    radial-gradient(circle at 80% 15%, rgba(255,255,255,.7) 0 4%, transparent 5%),
+    linear-gradient(135deg, #ffdce8, #fff5f8 48%, #ffd2e2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.page {
+  width: 100%;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.card {
+  position: relative;
+  width: min(92vw, 620px);
+  min-height: 490px;
+  padding: 48px 34px 38px;
+  border: 1px solid rgba(255,255,255,.85);
+  border-radius: 34px;
+  background: rgba(255,255,255,.78);
+  box-shadow: 0 25px 70px rgba(169, 55, 93, .22);
+  backdrop-filter: blur(12px);
+  text-align: center;
+  overflow: hidden;
+}
+
+.heart {
+  font-size: 48px;
+  animation: beat 1.1s infinite;
+  margin-bottom: 10px;
+}
+
+.screen {
+  display: none;
+  animation: appear .45s ease both;
+}
+
+.screen.active {
+  display: block;
+}
+
+.tiny {
+  margin: 4px 0 8px;
+  color: var(--pink);
+  font-weight: 700;
+  font-size: 16px;
+}
+
+h1 {
+  margin: 8px auto 14px;
+  font-size: clamp(29px, 6vw, 46px);
+  line-height: 1.25;
+  color: #8e2349;
+}
+
+.subtitle {
+  max-width: 470px;
+  margin: 0 auto;
+  font-size: 17px;
+  line-height: 1.8;
+  color: #8a5a69;
+}
+
+.buttons {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  min-height: 92px;
+  margin-top: 28px;
+}
+
+.btn {
+  border: 0;
+  border-radius: 999px;
+  padding: 14px 30px;
+  min-width: 125px;
+  font-size: 18px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform .18s ease, box-shadow .18s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn:hover {
+  transform: translateY(-3px) scale(1.03);
+}
+
+.yes, .forever {
+  color: white;
+  background: linear-gradient(135deg, #ff4f81, #d92f61);
+  box-shadow: 0 10px 22px rgba(217,47,97,.25);
+}
+
+.no {
+  color: #8e2349;
+  background: white;
+  border: 2px solid #ffd0de;
+  position: relative;
+}
+
+.no.moving {
+  position: absolute;
+}
+
+.hint {
+  min-height: 24px;
+  margin: 2px 0 0;
+  color: #c05a78;
+  font-size: 14px;
+}
+
+.second {
+  flex-wrap: wrap;
+}
+
+.forever {
+  min-width: 180px;
+}
+
+.big-heart {
+  font-size: 82px;
+  animation: beat 1.05s infinite;
+  margin: 15px 0;
+}
+
+.final-text {
+  color: #7d4b5d;
+  font-size: 20px;
+  line-height: 1.9;
+  margin: 10px auto 18px;
+}
+
+.signature {
+  color: var(--pink);
+  font-weight: 800;
+  font-size: 18px;
+}
+
+.hearts span {
+  position: fixed;
+  bottom: -50px;
+  font-size: 24px;
+  opacity: .65;
+  animation: floatUp linear infinite;
+  pointer-events: none;
+}
+
+.hearts span:nth-child(1) { left: 8%; animation-duration: 9s; animation-delay: 0s; }
+.hearts span:nth-child(2) { left: 24%; animation-duration: 12s; animation-delay: 2s; }
+.hearts span:nth-child(3) { left: 43%; animation-duration: 10s; animation-delay: 1s; }
+.hearts span:nth-child(4) { left: 61%; animation-duration: 13s; animation-delay: 4s; }
+.hearts span:nth-child(5) { left: 78%; animation-duration: 11s; animation-delay: 3s; }
+.hearts span:nth-child(6) { left: 91%; animation-duration: 14s; animation-delay: 5s; }
+
+@keyframes beat {
+  0%, 100% { transform: scale(1); }
+  15% { transform: scale(1.12); }
+  30% { transform: scale(1); }
+}
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(14px) scale(.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+  15% { opacity: .65; }
+  100% { transform: translateY(-115vh) rotate(25deg); opacity: 0; }
+}
+
+@media (max-width: 520px) {
+  .page { padding: 14px; }
+  .card {
+    min-height: 520px;
+    padding: 36px 20px 28px;
+    border-radius: 28px;
+  }
+  .heart { font-size: 42px; }
+  h1 { font-size: 31px; }
+  .subtitle { font-size: 15px; }
+  .buttons {
+    gap: 12px;
+    min-height: 110px;
+  }
+  .btn {
+    min-width: 118px;
+    padding: 13px 20px;
+    font-size: 17px;
+  }
+  .forever { min-width: 150px; }
+}
